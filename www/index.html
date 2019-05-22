@@ -1,17 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ANGclient</title>
-  <base href="/">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="New App, une application Web pour rester informé">
+        <meta name="keywords" content="PWA, News, WebApp">
+        <title>New app</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> 
+        <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"> 
+        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+        <link rel="stylesheet" href="./css/main.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"> 
-  <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
-  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-</head>
-<body>
-  <app-root></app-root>
-<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+        <!-- Ajout du manifest (PWA) -->
+        <link rel="manifest" href="manifest.json">
+
+        <!-- Définir le nom de l'application (cf. manifest.json) -->
+        <meta name="application-name" content="New app : resté informé tout le temps">
+
+        <!-- Définir les capacités de la PWA -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="New app : resté informé tout le temps">
+
+        <!-- Configuration Microsoft -->
+        <meta name="msapplication-navbutton-color" content="#999999">
+        <meta name="msapplication-starturl" content="index.html">
+
+        <!-- Définir la couleur principale de la PWA (cf. manifest.json) -->
+        <meta name="theme-color" content="#999999">
+        
+        <!-- Les icones doivent être communs avec ceux du manifest -->
+        <link rel="icon" sizes="192x192" href="./img/android/android-launchericon-192-192.png">
+        <link rel="icon" sizes="128x128" href="./img/chrome/chrome-installprocess-128-128.png">
+        <link rel="apple-touch-icon" sizes="128x128" href="./img/chrome/chrome-installprocess-128-128.png">
+        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="./img/chrome/chrome-installprocess-128-128.png">
+        <link rel="manifest" href="manifest.json">
+
+        <!-- Instancier le service-worker -->
+        <script>
+            
+            // Vérifier que le navigateur accepte les service-worker
+            if( 'serviceWorker' in navigator ){
+                try{
+                    navigator.serviceWorker.register('service-worker.js');
+                    console.log('Service worker registered');
+                }
+                catch(err){
+                    console.log('Service worker not registered', err);
+                };
+            };
+        </script>
+        
+    </head> 
+    <body>
+       
+        <script src="./js/main.js"></script>
+    </body>
 </html>
